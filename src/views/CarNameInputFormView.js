@@ -15,6 +15,7 @@ export default class CarNameInputFormView extends View {
 
   resetInputForm() {
     this.$carNamesInput.value = '';
+    this.$carNamesInput.focus();
   }
 
   onNameSubmitHandler() {

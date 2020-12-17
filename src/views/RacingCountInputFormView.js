@@ -15,6 +15,7 @@ export default class RacingCountInputFormView extends View {
 
   resetInputForm() {
     this.$racingCountInput.value = '';
+    this.$racingCountInput.focus();
   }
 
   onRacingCountSubmitHandler() {
