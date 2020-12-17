@@ -58,10 +58,18 @@ export default class RacingCarGame {
       this.cars.forEach((car) => {
         if (this.getRandomNumber() > CAR_RUN_CONDITION_NUMBER) car.run();
       });
-      this.resultForm.appendRacingOneRoundHTML(this.cars);
+      this.renderRacingOneRoundResult(this.cars);
     }
+    this.renderRacingResult(this.getWinner(this.cars));
+  }
+
+  renderRacingOneRoundResult(cars) {
+    this.resultForm.appendRacingOneRoundHTML(cars);
+  }
+
+  renderRacingResult(winner) {
     this.resultForm.show();
-    this.resultForm.renderRacingResultHtml(this.getWinner(this.cars));
+    this.resultForm.renderRacingResultHtml(winner);
   }
 
   getRandomNumber() {
