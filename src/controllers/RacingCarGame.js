@@ -27,22 +27,6 @@ export default class RacingCarGame {
     this.cars = [];
   }
 
-  onSubmitCarNamesHandler(carNames) {
-    console.log(`${tag} onSubmitCarNamesHandler`);
-    this.carNames = carNames.split(',');
-    carNameValidator(this.carNames)
-      ? this.createCar(this.carNames)
-      : this.carNameInputForm.resetInputForm();
-  }
-
-  onSubmitRacingCountHandler(racingCount) {
-    console.log(`${tag} onSubmitRacingCountHandler`);
-    this.racingCount = parseInt(racingCount);
-    racingCountValidator(this.racingCount)
-      ? this.play(racingCount)
-      : this.racingCountInputForm.resetInputForm();
-  }
-
   createCar(carNames) {
     console.log(`${tag} createCar`);
     this.setCars(carNames.map((carName) => new Car(carName)));
@@ -63,15 +47,6 @@ export default class RacingCarGame {
     this.renderRacingResult(this.getWinner(this.cars));
   }
 
-  renderRacingOneRoundResult(cars) {
-    this.resultForm.appendRacingOneRoundHTML(cars);
-  }
-
-  renderRacingResult(winner) {
-    this.resultForm.show();
-    this.resultForm.renderRacingResultHtml(winner);
-  }
-
   getRandomNumber() {
     return Math.floor(Math.random() * 9 + 1);
   }
@@ -83,6 +58,31 @@ export default class RacingCarGame {
 
   renderRacingCountForm() {
     this.racingCountInputForm.show();
+  }
+
+  renderRacingOneRoundResult(cars) {
+    this.resultForm.appendRacingOneRoundHTML(cars);
+  }
+
+  renderRacingResult(winner) {
+    this.resultForm.show();
+    this.resultForm.renderRacingResultHtml(winner);
+  }
+
+  onSubmitCarNamesHandler(carNames) {
+    console.log(`${tag} onSubmitCarNamesHandler`);
+    this.carNames = carNames.split(',');
+    carNameValidator(this.carNames)
+      ? this.createCar(this.carNames)
+      : this.carNameInputForm.resetInputForm();
+  }
+
+  onSubmitRacingCountHandler(racingCount) {
+    console.log(`${tag} onSubmitRacingCountHandler`);
+    this.racingCount = parseInt(racingCount);
+    racingCountValidator(this.racingCount)
+      ? this.play(racingCount)
+      : this.racingCountInputForm.resetInputForm();
   }
 }
 
