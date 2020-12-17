@@ -1,6 +1,5 @@
 import View from './View.js';
 
-const tag = `[RacingCountInputFormView]`;
 export default class RacingCountInputFormView extends View {
   setup($element) {
     this.init($element);
@@ -19,7 +18,6 @@ export default class RacingCountInputFormView extends View {
   }
 
   onRacingCountSubmitHandler() {
-    console.log(`${tag} RacingCountInputFormView`);
     this.emit('submitRacingCount', this.$racingCountInput.value);
   }
 }

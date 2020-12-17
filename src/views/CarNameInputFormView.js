@@ -1,6 +1,5 @@
 import View from './View.js';
 
-const tag = `[CarNameInputFormView]`;
 export default class CarNameInputFormView extends View {
   setup($element) {
     this.init($element);
@@ -19,7 +18,6 @@ export default class CarNameInputFormView extends View {
   }
 
   onNameSubmitHandler() {
-    console.log(`${tag} onNameSubmitHandler`);
     this.emit('submitCarNames', this.$carNamesInput.value);
   }
 }

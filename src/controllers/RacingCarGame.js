@@ -8,7 +8,6 @@ import { CAR_RUN_CONDITION_NUMBER } from '../utils/constants.js';
 
 import Car from '../models/Car.js';
 
-const tag = `[RacingCarGame]`;
 export default class RacingCarGame {
   init() {
     this.carNameInputForm = new CarNameInputFormView()
@@ -28,7 +27,6 @@ export default class RacingCarGame {
   }
 
   createCar(carNames) {
-    console.log(`${tag} createCar`);
     this.setCars(carNames.map((carName) => new Car(carName)));
   }
 
@@ -70,7 +68,6 @@ export default class RacingCarGame {
   }
 
   onSubmitCarNamesHandler(carNames) {
-    console.log(`${tag} onSubmitCarNamesHandler`);
     this.carNames = carNames.split(',');
     carNameValidator(this.carNames)
       ? this.createCar(this.carNames)
@@ -78,12 +75,9 @@ export default class RacingCarGame {
   }
 
   onSubmitRacingCountHandler(racingCount) {
-    console.log(`${tag} onSubmitRacingCountHandler`);
     this.racingCount = parseInt(racingCount);
     racingCountValidator(this.racingCount)
       ? this.play(racingCount)
       : this.racingCountInputForm.resetInputForm();
   }
 }
-
-new RacingCarGame();
