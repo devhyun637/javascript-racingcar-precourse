@@ -13,5 +13,13 @@ const isLessThanMaxLength = (carName) => {
 };
 
 export default function CarNameValidator(carNames) {
-  return isNotNull(carNames) && isNotIncludedEmptyString(carNames) && isLessThanMaxLength(carNames);
+  for (let i = 0; i < carNames.length; i++) {
+    if (
+      !isNotNull(carNames[i]) ||
+      !isNotIncludedEmptyString(carNames[i]) ||
+      !isLessThanMaxLength(carNames[i])
+    )
+      return false;
+  }
+  return true;
 }

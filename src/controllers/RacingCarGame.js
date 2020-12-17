@@ -30,7 +30,7 @@ export default class RacingCarGame {
   onSubmitCarNamesHandler(carNames) {
     console.log(`${tag} onSubmitCarNamesHandler`);
     this.carNames = carNames.split(',');
-    this.carNames.map(carNameValidator).every((result) => result)
+    carNameValidator(this.carNames)
       ? this.createCar(this.carNames)
       : this.carNameInputForm.resetInputForm();
   }
