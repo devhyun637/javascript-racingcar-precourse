@@ -4,5 +4,7 @@ export default class Car {
     this.distance = 0;
   }
 
-  run() {}
+  run() {
+    this.distance += 1;
+  }
 }

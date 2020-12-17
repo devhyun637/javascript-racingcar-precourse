@@ -4,6 +4,7 @@ import ResultView from '../views/ResultView.js';
 
 import carNameValidator from '../utils/carNameValidator.js';
 import racingCountValidator from '../utils/racingCountValidator.js';
+import { CAR_RUN_CONDITION_NUMBER } from '../utils/constants.js';
 
 import Car from '../models/Car.js';
 
@@ -34,8 +35,9 @@ export default class RacingCarGame {
 
   onSubmitRacingCountHandler(racingCount) {
     console.log(`${tag} onSubmitRacingCountHandler`);
-    racingCountValidator(parseInt(racingCount))
-      ? this.play()
+    this.racingCount = parseInt(racingCount);
+    racingCountValidator(this.racingCount)
+      ? this.play(racingCount)
       : this.racingCountInputForm.resetInputForm();
   }
 
@@ -49,7 +51,17 @@ export default class RacingCarGame {
     this.renderRacingCountForm();
   }
 
-  play() {}
+  play(racingCount) {
+    for (let i = 0; i < racingCount; i++) {
+      this.cars.forEach((car) => {
+        if (this.getRandomNumber() > CAR_RUN_CONDITION_NUMBER) car.run();
+      });
+    }
+  }
+
+  getRandomNumber() {
+    return Math.floor(Math.random() * 9 + 1);
+  }
 
   renderRacingCountForm() {
     this.racingCountInputForm.show();
