@@ -20,7 +20,9 @@ export default class RacingCarGame {
       .hide()
       .on('submitRacingCount', (event) => this.onSubmitRacingCountHandler(event.detail));
 
-    new ResultView().init(document.querySelector('#racing-result-container')).hide();
+    this.resultForm = new ResultView()
+      .setup(document.querySelector('#racing-result-container'))
+      .hide();
 
     this.cars = [];
   }
@@ -56,11 +58,19 @@ export default class RacingCarGame {
       this.cars.forEach((car) => {
         if (this.getRandomNumber() > CAR_RUN_CONDITION_NUMBER) car.run();
       });
+      this.resultForm.appendRacingOneRoundHTML(this.cars);
     }
+    this.resultForm.show();
+    this.resultForm.renderRacingResultHtml(this.getWinner(this.cars));
   }
 
   getRandomNumber() {
     return Math.floor(Math.random() * 9 + 1);
+  }
+
+  getWinner(cars) {
+    const maxDistance = Math.max(...cars.map((car) => car.distance));
+    return cars.filter((car) => car.distance === maxDistance);
   }
 
   renderRacingCountForm() {
