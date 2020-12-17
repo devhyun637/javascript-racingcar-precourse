@@ -1,7 +1,5 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
+import RacingCarGame from './controllers/RacingCarGame.js';
 
-
-new RacingCarGame();
+document.addEventListener('DOMContentLoaded', () => {
+  new RacingCarGame().init();
+});
