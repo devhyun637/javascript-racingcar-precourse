@@ -4,7 +4,7 @@ import ResultView from '../views/ResultView.js';
 
 import carNameValidator from '../utils/carNameValidator.js';
 import racingCountValidator from '../utils/racingCountValidator.js';
-import { CAR_RUN_CONDITION_NUMBER } from '../utils/constants.js';
+import { CAR_RUN_CONDITION_NUMBER, RANDOM_NUM } from '../utils/constants.js';
 
 import Car from '../models/Car.js';
 
@@ -46,7 +46,7 @@ export default class RacingCarGame {
   }
 
   getRandomNumber() {
-    return Math.floor(Math.random() * 9 + 1);
+    return Math.floor(Math.random() * RANDOM_NUM + 1);
   }
 
   getWinner(cars) {
